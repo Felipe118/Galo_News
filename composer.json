@@ -1,0 +1,23 @@
+{
+    "name": "lipeb/news_galo",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Src\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Felipe118",
+            "email": "lipebezerraa@gmail.com"
+        }
+    ],
+    "require": {
+        "slim/slim": "4.*"
+    },
+    "config": {
+
+        "platform-check": false
+    }
+    
+}
