@@ -1,0 +1,26 @@
+
+.box__news{
+   
+    display: flex;
+    border-bottom: 1px solid gray;
+    justify-content: space-between;
+    padding: 1rem;
+    width: 70%;
+  
+}
+.box__img{
+    width: 359px;
+    height: 202px;
+}
+.bom__text-img{
+  
+    padding: 1rem;
+}
+.box__link{
+    text-decoration: none;
+    color: black;
+    margin: 1rem;
+   }
+.box__resume{
+    padding: 1.2rem 0;
+}
