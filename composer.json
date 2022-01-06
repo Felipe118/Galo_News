@@ -13,7 +13,7 @@
         }
     ],
     "require": {
-        "slim/slim": "4.*"
+        "twig/twig":"^3.0"
     },
     "config": {
 
