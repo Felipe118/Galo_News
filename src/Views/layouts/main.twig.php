@@ -27,7 +27,7 @@
 
                 
             </ul>
-            <a href="/auth" class="btn-login ">ENTRAR</a>
+            <a href="/News_Galo/auth" class="btn-login ">ENTRAR</a>
            
         </nav>
        

@@ -1,7 +1,9 @@
 <?php
     namespace Src\Utils\Init;
 
-    abstract class Bootstrap{
+use Throwable;
+
+abstract class Bootstrap{
         private $routes;
 
         public abstract function initRoutes();
@@ -21,17 +23,20 @@
         }
 
         protected function run($url){
-            foreach ($this->getRoutes() as $routes)
-            {
-                if($url == $routes['route']){
-                    $class = "Src\\Controllers\\".ucfirst($routes['controller']);
-                    $controller = new $class;
-                    $action = $routes['action'];
-                    $controller->$action();
-                }else{
-                    echo "ERRO";
+            try{
+                foreach ($this->getRoutes() as $routes)
+                {
+                    if($url == $routes['route']){
+                        $class = "Src\\Controllers\\".ucfirst($routes['controller']);
+                        $controller = new $class;
+                        $action = $routes['action'];
+                        $controller->$action();
+                    }
                 }
+            }catch(Throwable $erro){
+                echo "erro".$erro->getMessage();
             }
+          
         }
         protected function getUrl(){
             return str_replace('/News_Galo', '',parse_url($_SERVER['REQUEST_URI'],PHP_URL_PATH));

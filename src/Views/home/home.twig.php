@@ -1,6 +1,6 @@
 {% extends('/layouts/main.twig.php') %}
 
-{% block title %}Teste Blog{%endblock%}
+{% block title %}News Galo{%endblock%}
 
 {% block body %}
 

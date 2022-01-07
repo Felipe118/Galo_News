@@ -1,11 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/login.css">
-    <link rel = "shortcut icon" type = "imagem/x-icon" href = "/img/logo_galo.svg"/>
+    <link rel="stylesheet" href="./assets/css/login.css">
+    <link rel = "shortcut icon" type = "imagem/x-icon" href = "./assets/img/logo_galo.svg"/>
     <title>Login</title>
 </head>
 <body>
@@ -20,7 +20,7 @@
 
         <div class="form-control">
             <label for="confirmsenha">Confirme a senha:</label>
-            <input type="password" name="confirmsenha" id="">
+            <input type="password" placeholder="Confirme a Senha" name="confirmsenha" id="">
         </div>
 
         <button class="btn-login">Confirmar</button>
