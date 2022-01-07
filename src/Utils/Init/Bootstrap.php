@@ -1,5 +1,5 @@
 <?php
-    namespace Src\Ultils;
+    namespace Src\Utils\Init;
 
     abstract class Bootstrap{
         private $routes;

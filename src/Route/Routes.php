@@ -1,7 +1,7 @@
 <?php
 namespace Src\Route;
 
-use App\Utils\Init\Bootstrap;
+use Src\Utils\Init\Bootstrap;
 
 class Routes extends Bootstrap{
     
@@ -11,9 +11,9 @@ class Routes extends Bootstrap{
 
     public function InitRoutes(){
         $route['/'] = [
-            'route' => '',
-            'controller' => '',
-            'action' => ''
+            'route' => '/',
+            'controller' => 'IndexController',
+            'action' => 'home'
         ];
 
         $this->setRoutes($route);
