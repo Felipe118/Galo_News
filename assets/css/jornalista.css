@@ -1,0 +1,17 @@
+.form__jornalista{
+    border: 1px solid red;
+    padding: 1rem;
+}
+.title__create{
+    text-align: center;
+    padding: 1rem;
+}
+.label-form{
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+.form__control-jor{
+    padding: .5rem;
+    margin: .5rem;
+}
+

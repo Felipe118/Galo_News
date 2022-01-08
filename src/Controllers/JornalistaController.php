@@ -17,4 +17,17 @@ class JornalistaController extends Controller
             'jornalista' => $jor
         ]);
     }
-}
+
+    public function createJornalista()
+    {
+        $jornalista = Container::getModel('Jornalista');
+
+        // $jornalista->__set('nome','');
+        // $jornalista->__set('email','');
+        // $jornalista->__set('senha','');
+        // $jornalista->__set('foto','');
+        // $jornalista->__set('permissao','');
+        return $this->view('jornalista.create');
+    }
+    }
+    
