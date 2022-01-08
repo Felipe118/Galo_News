@@ -5,8 +5,13 @@
 
     class IndexController extends Controller
     {
-        public function home(){
+        public function home()
+        {
             return $this->view('home.home');
+        }
+        public function homeLogado()
+        {
+            return $this->view('home.homeLogado');
         }
 
 

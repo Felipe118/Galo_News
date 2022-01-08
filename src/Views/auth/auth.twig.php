@@ -11,7 +11,7 @@
 </head>
 <body>
    
- <form action="/authPost" method="POST">
+ <form action="/News_Galo/authPost" method="POST">
      <div class="form">
         <div class="form-control">
             <label for="e-mail">E-mail</label>

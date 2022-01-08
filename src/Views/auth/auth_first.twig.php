@@ -10,7 +10,7 @@
 </head>
 <body>
    
- <form action="/auth-first-save" method="POST">
+ <form action="/News_Galo/auth-first-save" method="POST">
      <div class="form">
 
         <div class="form-control">

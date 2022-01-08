@@ -10,10 +10,15 @@ class Routes extends Bootstrap{
 
 
     public function InitRoutes(){
-        $route['/'] = [
+        $route['home'] = [
             'route' => '/',
             'controller' => 'IndexController',
             'action' => 'home'
+        ];
+        $route['homeLogado'] = [
+            'route' => '/homeLogado',
+            'controller' => 'IndexController',
+            'action' => 'homeLogado'
         ];
         $route['auth'] = [
             'route' => '/auth',
@@ -24,6 +29,21 @@ class Routes extends Bootstrap{
             'route' => '/authPost',
             'controller' => 'AuthController',
             'action' => 'authPost'
+        ];
+        $route['authFirst'] = [
+            'route' => '/auth-first',
+            'controller' => 'AuthController',
+            'action' => 'authFirstAcess'
+        ];
+        $route['authFirstPost'] = [
+            'route' => '/auth-first-save',
+            'controller' => 'AuthController',
+            'action' => 'authFirstAcessPost'
+        ];
+        $route['logout'] = [
+            'route' => '/logout',
+            'controller' => 'AuthController',
+            'action' => 'logout'
         ];
 
 
