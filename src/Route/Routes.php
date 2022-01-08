@@ -20,6 +20,12 @@ class Routes extends Bootstrap{
             'controller' => 'AuthController',
             'action' => 'auth'
         ];
+        $route['authPost'] = [
+            'route' => '/authPost',
+            'controller' => 'AuthController',
+            'action' => 'authPost'
+        ];
+
 
         $this->setRoutes($route);
 
