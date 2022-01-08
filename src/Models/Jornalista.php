@@ -91,6 +91,17 @@ class Jornalista extends Model
             }
         }
 
+        public function listJournalist()
+        {
+            $query = "SELECT * FROM jornalistas";
+            $stmt = $this->db->prepare($query);
+            $stmt->execute();
+
+            $journalist = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+            return $journalist;
+        }
+ 
 
 
         

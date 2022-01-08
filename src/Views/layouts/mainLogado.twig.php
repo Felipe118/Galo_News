@@ -14,22 +14,8 @@
       {% block header %}{%endblock%}
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <img class="logo_img" src="./assets/img/logo_galo.svg" alt="Logo Galo">
-            <ul class="list">
-                <li class="list__item"><a href="/jornalista" class="list__link">Controle de Jornalista</a></li>
-                <li class="list__item"><a href="#" class="list__link">Notícias</a></li>
-                <li class="list__item"><a href="#" class="list__link">Jogadores</a></li>
-                <li class="list__item"><a href="#" class="list__link">História</a></li>
-
-                
-            </ul>
-            <a href="/News_Galo/logout" class="btn-login ">Sair</a>
-           
-        </nav>
-       
-    </header>
+   
+ 
     {% block body %}{% endblock %}
    <!--<footer>&copy; Rodape</footer>-->
 </body>

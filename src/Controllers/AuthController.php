@@ -37,7 +37,8 @@ class AuthController extends Controller
                     if ($jornalista->__get('primeiro_acesso') == 'sim') {
                         return header('Location: /News_Galo/auth-first');
                     } 
-    
+                   
+                   
                     return header('Location: /News_Galo/homeLogado');
     
                 

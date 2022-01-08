@@ -45,6 +45,11 @@ class Routes extends Bootstrap{
             'controller' => 'AuthController',
             'action' => 'logout'
         ];
+        $route['jornalista'] = [
+            'route' => '/jornalista',
+            'controller' => 'JornalistaController',
+            'action' => 'homeJornalista'
+        ];
 
 
         $this->setRoutes($route);

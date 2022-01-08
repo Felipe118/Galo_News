@@ -11,6 +11,13 @@
         }
         public function homeLogado()
         {
+            session_start();
+            
+            if($_SESSION['permissao'] === 'admin'){
+                return $this->view('home.homeLogado', [
+                    'sessao' => $_SESSION['permissao']
+                ]);
+           }
             return $this->view('home.homeLogado');
         }
 
