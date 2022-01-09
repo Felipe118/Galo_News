@@ -7,10 +7,10 @@
         <h2 class="title__create">Cadastrando Jornalistas</h2>
 
         <div class="form__jornalista">
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="/News_Galo/new-jornalista" method="post" enctype="multipart/form-data">
                 <div class="form__control-jor col-8 ">
                     <label for="nome" class="label-form">Nome:</label>
-                    <input type="text" name="name" id="" class="form-control">
+                    <input type="text" name="nome" id="" class="form-control">
                 </div>
                 <div class="form__control-jor  col-8">
                     <label for="nome" class="label-form">E-mail:</label>
@@ -22,10 +22,10 @@
                 </div>
                 <div class="form__control-jor col-8">
                     <label for="" class="label-form">Foto:</label>
-                    <input type="file" src="" class="form-control" alt="fotos" accept=".jpg, .png, .jpeg">
+                    <input type="file" src=""  name="foto" class="form-control" alt="fotos" accept=".jpg, .png, .jpeg">
                 </div>
                 <div class="form__control-jor">
-                    <label for="">Permisão:</label>
+                    <label for="" class="label-form">Permisão:</label>
                     <select name="permissao" id="">
                         <option value="admin">Administrador</option>
                         <option value="jornalista">Jornalista</option>

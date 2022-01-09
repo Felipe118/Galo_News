@@ -71,7 +71,7 @@ class AuthController extends Controller
                 return header('Location:/News_Galo/auth-first?error=confirmpassword');
             }
     
-            $password_hash =   password_hash($_POST['senha'], PASSWORD_BCRYPT);;
+            $password_hash =   password_hash($_POST['senha'], PASSWORD_BCRYPT);
             $id = $_SESSION['id'];
             $email = $_SESSION['email'];
             $nome = $_SESSION['nome'];

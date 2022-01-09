@@ -1,5 +1,4 @@
 .form__jornalista{
-    border: 1px solid red;
     padding: 1rem;
 }
 .title__create{
@@ -7,7 +6,7 @@
     padding: 1rem;
 }
 .label-form{
-    font-size: 1.4rem;
+    font-size: 1.1rem;
     font-weight: bold;
 }
 .form__control-jor{
