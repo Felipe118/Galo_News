@@ -13,6 +13,7 @@ class Jornalista extends Model
         private string $senha;
         private string $foto;
         private string $permissao;
+        private string $primeiro_acesso;
 
         
         public function __get($attribute){
@@ -89,6 +90,24 @@ class Jornalista extends Model
             }catch(\PDOException $erro){
                 echo "ERROR:".$erro->getMessage();
             }
+        }
+
+        public function createJornalista()
+        {
+           
+                $query = "INSERT INTO jornalistas(nome,email,senha,foto,permissao) VALUES(:nome, :email ,:senha,:foto,:permissao);";
+                $stmt = $this->db->prepare($query);
+                $stmt->bindValue(':nome', $this->__get('nome'));
+                $stmt->bindValue(':email', $this->__get('email'));
+                $stmt->bindValue(':senha', $this->__get('senha'));
+                $stmt->bindValue(':foto', $this->__get('foto'));
+                $stmt->bindValue(':permissao', $this->__get('permissao'));
+    
+                $stmt->execute();
+    
+                return $this;
+         
+           
         }
 
         public function listJournalist()

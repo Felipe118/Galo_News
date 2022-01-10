@@ -10,19 +10,19 @@
             <form action="/News_Galo/new-jornalista" method="post" enctype="multipart/form-data">
                 <div class="form__control-jor col-8 ">
                     <label for="nome" class="label-form">Nome:</label>
-                    <input type="text" name="nome" id="" class="form-control">
+                    <input type="text" name="nome" id="" class="form-control" required>
                 </div>
                 <div class="form__control-jor  col-8">
                     <label for="nome" class="label-form">E-mail:</label>
-                    <input type="text" name="email" id="" class="form-control">
+                    <input type="text" name="email" id="" class="form-control" required>
                 </div>
                 <div class="form__control-jor col-8">
                     <label for="nome" class="label-form">Senha:</label>
-                    <input type="password" class="form-control" name="senha" id="">
+                    <input type="password" class="form-control" name="senha" id="" required>
                 </div>
                 <div class="form__control-jor col-8">
                     <label for="" class="label-form">Foto:</label>
-                    <input type="file" src=""  name="foto" class="form-control" alt="fotos" accept=".jpg, .png, .jpeg">
+                    <input type="file"   name="foto" class="form-control" alt="fotos" accept=".jpg, .png, .jpeg">
                 </div>
                 <div class="form__control-jor">
                     <label for="" class="label-form">Permisão:</label>
