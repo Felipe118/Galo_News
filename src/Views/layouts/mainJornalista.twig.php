@@ -22,10 +22,10 @@
         <nav class="navbar-jor">
             <img class="logo_img-jor" src="./assets/img/logo_galo.svg" alt="Logo Galo">
             <ul class="list">
-                <li class="list__item"><a href="#" class="list__link">História</a></li>
+                <li class="list__item"><a href="/News_Galo/homeLogado" class="list__link">Home</a></li>
                 <li class="list__item"><a href="#" class="list__link">Titúlos</a></li>
                 <li class="list__item"><a href="#" class="list__link">Notícias</a></li>
-                <li class="list__item"><a href="#" class="list__link">Jornalistas</a></li>
+                <li class="list__item"><a href="/News_Galo/jornalista" class="list__link">Jornalistas</a></li>
             </ul>
             <a href=" /News_Galo/logout" class="btn-login ">Sair</a>
            

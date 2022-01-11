@@ -27,23 +27,25 @@ class JornalistaController extends Controller
         if(($_FILES['foto']['name'] != '')){
             print_r($_FILES['foto']['name']);
             echo 'imagem poreenchida';
-            // $image = $_FILES['foto'];
-            // $pasta = "./assets/img/img-perfil";
-            // $nameImage = $image['name'];
-            // $newNameImage = $_POST['nome'].uniqid();
-            // $extension = strtolower(pathinfo($nameImage, PATHINFO_EXTENSION));
-            // $path = $pasta."/".$newNameImage.".".$extension;
+            $image = $_FILES['foto'];
+            $pasta = "./assets/img/img-perfil";
+            $nameImage = $image['name'];
+            $newNameImage = $_POST['nome'].uniqid();
+            $extension = strtolower(pathinfo($nameImage, PATHINFO_EXTENSION));
+            $path = $pasta."/".$newNameImage.".".$extension;
 
           
 
-            // if($extension != 'jpg' && $extension != 'png'){
-            //     die("Tipo de arquivo não aceito, apenas jpg e png são aceitos!");
-            // }
-            // $img = move_uploaded_file($image['tmp_name'],$path);
-            // $jornalista->__set('foto',$path);
+            if($extension != 'jpg' && $extension != 'png'){
+                die("Tipo de arquivo não aceito, apenas jpg e png são aceitos!");
+            }
+            $img = move_uploaded_file($image['tmp_name'],$path);
+            $jornalista->__set('foto',$path);
         }else{
-            echo 'imagem vazia';
+            $jornalista->__set('foto', 'null');
         }
+
+       
 
         $password_hash = password_hash($_POST['senha'], PASSWORD_BCRYPT);
 
@@ -52,9 +54,18 @@ class JornalistaController extends Controller
         $jornalista->__set('senha',$password_hash);
         $jornalista->__set('permissao',$_POST['permissao']);
 
-        //$jornalista->createJornalista();
+        $jornalista->createJornalista();
 
-        //return $this->view('jornalista.create');
+        return $this->view('jornalista.create');
+    }
+    public function jornalistaDelete()
+    {
+        $jornalista = Container::getModel('Jornalista');
+        $jornalista->__set('id',$_POST['id']);
+        $jornalista->jornalistaDelete();
+
+        return header("Location: /News_Galo/jornalista");
+      
     }
 
 

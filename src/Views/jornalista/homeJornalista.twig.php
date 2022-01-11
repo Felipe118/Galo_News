@@ -23,9 +23,11 @@
             {% for jorn in jornalista %}    
                 <tr>
                     <td>{{jorn.nome}}</td>
+                    
                     <td style="display:flex;">
                         <a href="/"><button class="btn btn-primary">Editar</button></a>
-                        <form action="#" method="POST" style="margin-left:15px">
+                        <form action="/News_Galo/jorndelete" method="POST" style="margin-left:15px">
+                        <input type="hidden" name="id" value="{{jorn.id}}">
                         <button type="submit" class="btn btn-danger" style="float:right">Deletar</button>
                         </form>
                     </td>

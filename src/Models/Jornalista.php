@@ -106,9 +106,7 @@ class Jornalista extends Model
                 $stmt->execute();
     
                 return $this;
-         
-           
-        }
+          }
 
         public function listJournalist()
         {
@@ -119,6 +117,13 @@ class Jornalista extends Model
             $journalist = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
             return $journalist;
+        }
+        public function jornalistaDelete()
+        {
+            $query = "DELETE FROM jornalistas where id = :id";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(':id',$this->__get('id'));
+            $stmt->execute();
         }
  
 

@@ -19,33 +19,42 @@ class AuthController extends Controller
 
                 $jornalista = Container::getModel('Jornalista');
                 $jornalista->__set('email', $_POST['email']);
-                $jornalista->Auth();
-                
-                $pass =  $jornalista->__get('senha');
               
-    
-                if ( password_verify($_POST['senha'], $pass) ) {
-                    session_start();
-    
-                    $_SESSION['id'] = $jornalista->__get('id');
-                    $_SESSION['nome']  = $jornalista->__get('nome');
-                    $_SESSION['email']  = $jornalista->__get('email');
-                    $_SESSION['permissao']  = $jornalista->__get('permissao');
-                    $_SESSION['autenticado'] = true;
-    
-                   
-                    if ($jornalista->__get('primeiro_acesso') == 'sim') {
-                        return header('Location: /News_Galo/auth-first');
-                    } 
-                   
-                   
-                    return header('Location: /News_Galo/homeLogado');
-    
+                    $jornalista->Auth();
+
+                    if($jornalista->__get('email') != ''){
+                        $pass =  $jornalista->__get('senha');
+                  
+        
+                        if ( password_verify($_POST['senha'], $pass) ) {
+                            session_start();
+            
+                            $_SESSION['id'] = $jornalista->__get('id');
+                            $_SESSION['nome']  = $jornalista->__get('nome');
+                            $_SESSION['email']  = $jornalista->__get('email');
+                            $_SESSION['permissao']  = $jornalista->__get('permissao');
+                            $_SESSION['autenticado'] = true;
+            
+                           
+                            if ($jornalista->__get('primeiro_acesso') == 'sim') {
+                                return header('Location: /News_Galo/auth-first');
+                            } 
+                           
+                           
+                            return header('Location: /News_Galo/homeLogado');
+            
+                        
+                            
+                        } else {
+                            header('Location: /News_Galo/auth?erro=login');
+                        }
+                    }else{
+                        header('Location: /News_Galo/auth?erro=login');
+                    }
                 
-                    
-                } else {
-                    header('Location: /News_Galo/auth?erro=login');
-                }
+                   
+               
+               
 
             }catch(Throwable $erro){
                 echo "ERRO:".$erro->getMessage();
