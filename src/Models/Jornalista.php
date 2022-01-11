@@ -30,8 +30,8 @@ class Jornalista extends Model
                 $stmt = $this->db->prepare($query);
                 $stmt->bindValue(':email', $this->__get('email'));
                // $stmt->bindValue(':senha', $this->__get('senha'));
-                $stmt->execute();
-    
+
+               $stmt->execute();
                 $jornalista = $stmt->fetch(\PDO::FETCH_ASSOC);
     
                 if($jornalista['id'] != '' && $jornalista['email'] != '' && $jornalista['permissao'] !='' ){
@@ -44,6 +44,10 @@ class Jornalista extends Model
     
                 }
                 return $this;
+              
+              
+    
+             
 
             }catch(\PDOException $e){
                 echo "ERRO:". $e->getMessage();

@@ -22,7 +22,7 @@ class AuthController extends Controller
               
                     $jornalista->Auth();
 
-                    if($jornalista->__get('email') != ''){
+                  
                         $pass =  $jornalista->__get('senha');
                   
         
@@ -48,9 +48,7 @@ class AuthController extends Controller
                         } else {
                             header('Location: /News_Galo/auth?erro=login');
                         }
-                    }else{
-                        header('Location: /News_Galo/auth?erro=login');
-                    }
+                 
                 
                    
                
