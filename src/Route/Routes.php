@@ -65,6 +65,21 @@ class Routes extends Bootstrap{
             'controller' => 'JornalistaController',
             'action' => 'jornalistaDelete'
         ];
+        $route['materias'] = [
+            'route' => '/materias',
+            'controller' => 'NoticiasController',
+            'action' => 'materias'
+        ];
+        $route['createMaterias'] = [
+            'route' => '/create-materias',
+            'controller' => 'NoticiasController',
+            'action' => 'createMaterias'
+        ];
+        $route['createMateriasPost'] = [
+            'route' => '/new-materias',
+            'controller' => 'NoticiasController',
+            'action' => 'createMateriasPost'
+        ];
 
 
         $this->setRoutes($route);

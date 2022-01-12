@@ -28,7 +28,6 @@ class JornalistaController extends Controller
        
         if(($_FILES['foto']['name'] != '')){
             print_r($_FILES['foto']['name']);
-            echo 'imagem poreenchida';
             $image = $_FILES['foto'];
             $pasta = "./assets/img/img-perfil";
             $nameImage = $image['name'];
