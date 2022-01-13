@@ -10,4 +10,9 @@ class NoticiasController extends Controller
     {
         return $this->view('news.news');
     }
+
+    public function createMaterias()
+    {
+        return $this->view('news.create');
+    }
 }

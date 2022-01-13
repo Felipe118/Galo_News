@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/header.css">
     <link rel="stylesheet" href="./assets/css/jornalista.css">
+    <link rel="stylesheet" href="./assets/css/news.css">
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/modal.css">
     <link rel="stylesheet" href="./assets/css/box.css">
@@ -15,6 +16,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,600&display=swap" rel="stylesheet">
     <title>{% block title %}{%endblock%}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css">
+    <script src="https://cdn.tiny.cloud/1/ohl4zbusqhdwivf82s7806jf9beli20cslo010aso81q3a4x/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+    <script>
+        tinymce.init({
+            selector: '#noticia'
+        });
+    </script>
     {% block header %}{%endblock%}
 </head>
 <body>

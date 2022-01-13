@@ -1,0 +1,12 @@
+.form__news{
+    padding: 1rem;
+    border: 1px solid red;
+}
+.title-news{
+    text-align: center;
+    padding: 1rem;
+
+}
+.btn-news{
+    margin:1rem 1rem !important;
+}
