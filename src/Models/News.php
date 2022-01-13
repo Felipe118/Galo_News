@@ -22,6 +22,28 @@
      public function createNews()
      {
          $query = "INSERT INTO materias(titulo,resumo,noticia,tag,fk_jornalista) VALUES(:titulo,:resumo,:noticia,:tag,:fk_jornalista);";
+         $stmt = $this->db->prepare($query);
+         $stmt->bindValue(':titulo',$this->__get('titulo'));
+         $stmt->bindValue(':resumo',$this->__get('resumo'));
+         $stmt->bindValue(':noticia',$this->__get('noticia'));
+         $stmt->bindValue(':tag',$this->__get('tag'));
+         $stmt->bindValue(':fk_jornalista',$this->__get('fk_jornalista'));
+
+         $stmt->execute();
+
+         return $this;
+     }
+
+     public function listNews()
+     {
+         $query = "SELECT id,titulo,resumo,noticia,tag,fk_jornalista FROM materias where fk_jornalista = :fk_jornalista";
+         $stmt = $this->db->prepare($query);
+         $stmt->bindValue(':fk_jornalista',$this->__get('fk_jornalista'));
+         $stmt->execute();
+
+         $news = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+         return $news;
      }
 
 
