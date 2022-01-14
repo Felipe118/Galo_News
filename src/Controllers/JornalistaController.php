@@ -7,7 +7,7 @@ class JornalistaController extends Controller
 {
     public function homeJornalista()
     {
-        $this->verify();
+        $this->verifyUserLogged();
         $jornalista = Container::getModel('Jornalista');
         $jor = $jornalista->listJournalist();
 
@@ -18,12 +18,12 @@ class JornalistaController extends Controller
 
     public function createJornalista()
     {
-        $this->verify();
+        $this->verifyUserLogged();
         return $this->view('jornalista.create');
     }
     public function createJornalistaPost()
     {
-        $this->verify();
+        $this->verifyUserLogged();
         $jornalista = Container::getModel('Jornalista');
        
         if(($_FILES['foto']['name'] != '')){
@@ -61,7 +61,7 @@ class JornalistaController extends Controller
     }
     public function jornalistaDelete()
     {
-        $this->verify();
+        $this->verifyUserLogged();
         $jornalista = Container::getModel('Jornalista');
         $jornalista->__set('id',$_POST['id']);
         $jornalista->jornalistaDelete();
@@ -69,7 +69,7 @@ class JornalistaController extends Controller
         return header("Location: /News_Galo/jornalista");
       
     }
-    public function verify(){
+    public function verifyUserLogged(){
         session_start();
         if($_SESSION['autenticado'] == false){
             header("location:/News_Galo/");

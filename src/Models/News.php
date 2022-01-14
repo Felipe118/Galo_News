@@ -45,6 +45,24 @@
 
          return $news;
      }
+     public  function  listNewsOneEdit()
+     {
+         $query = "SELECT id,titulo,resumo,noticia,tag,fk_jornalista FROM materias WHERE id = :id";
+         $stmt = $this->db->prepare($query);
+         $stmt->bindValue(':id',$this->__get('id'));
+         $stmt->execute();
+
+         $news = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+         return $news;
+     }
+     public  function deleteNews()
+     {
+         $query = "DELETE FROM materias WHERE id = :id";
+         $stmt = $this->db->prepare($query);
+         $stmt->bindValue(':id',$this->__get('id'));
+         $stmt->execute();
+     }
 
 
 

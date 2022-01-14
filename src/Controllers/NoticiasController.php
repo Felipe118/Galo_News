@@ -45,4 +45,53 @@ class NoticiasController extends Controller
             ]);
 
     }
+
+    public function deleteNews()
+    {
+
+        $noticias = Container::getModel('News');
+        $noticias->__set('id',$_POST['id']);
+        $noticias->deleteNews();
+        session_start();
+        $listNews = Container::getModel('News');
+        $listNews->__set('fk_jornalista',$_SESSION['id']);
+        $news = $listNews->listNews();
+
+        return $this->view('news.news',[
+            'message' => 'Matéria deletada com sucesso',
+            'news' => $news
+        ]);
+    }
+
+    public function editNews()
+    {
+        session_start();
+        $listNews = Container::getModel('News');
+        $id = $_GET['registro'];
+        $listNews->__set('id',$id);
+        $new = $listNews->listNewsOneEdit();
+
+        if($new['fk_jornalista'] == $_SESSION['id']){
+            return $this->view('news.edit', [
+                'news' => $new
+            ]);
+        }else{
+            return $this->view('news.edit', [
+                'message' => 'Erro essá matéria não foi cadastrada por você'
+            ]);
+        }
+
+
+        //return $this->view('news.edit');
+    }
+
+    public  function  listNewsForJornalist()
+    {
+        session_start();
+        $listNews = Container::getModel('News');
+        $listNews->__set('fk_jornalista',$_SESSION['id']);
+        $news = $listNews->listNews();
+
+        return $news;
+    }
 }

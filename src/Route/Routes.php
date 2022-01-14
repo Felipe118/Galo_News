@@ -80,6 +80,16 @@ class Routes extends Bootstrap{
             'controller' => 'NoticiasController',
             'action' => 'createMateriasPost'
         ];
+        $route['newsDelete'] = [
+            'route' => '/news-delete',
+            'controller' => 'NoticiasController',
+            'action' => 'deleteNews'
+        ];
+        $route['newsEdit'] = [
+            'route' => '/news-edit',
+            'controller' => 'NoticiasController',
+            'action' => 'editNews'
+        ];
 
 
         $this->setRoutes($route);

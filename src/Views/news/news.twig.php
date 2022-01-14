@@ -47,10 +47,10 @@
                     <td>{{new.titulo}}</td>
 
                     <td style="display:flex;">
-                        <a href="/"><button class="btn btn-primary">Editar</button></a>
-                        <form action="/News_Galo/jorndelete" method="POST" style="margin-left:15px">
-                            <input type="hidden" name="id" value="{{news.id}}">
-                            <button type="submit" class="btn btn-danger" style="float:right">Deletar</button>
+                        <a href="/News_Galo/news-edit?registro={{new.id}}" ><button class="btn btn-primary ">Editar</button></a>
+                        <form action="/News_Galo/news-delete" method="POST" style="margin-left:15px" id="form-btn">
+                            <input type="hidden" name="id" value="{{new.id}}">
+                            <button type="submit" class="btn btn-danger " style="float:right">Deletar</button>
                         </form>
                     </td>
 
