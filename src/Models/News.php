@@ -56,6 +56,20 @@
 
          return $news;
      }
+
+     public function editNews()
+     {
+         $query = "UPDATE materias SET titulo = :titulo,resumo = :resumo, noticia = :noticia, tag = :tag WHERE id = :id ";
+         $stmt = $this->db->prepare($query);
+         $stmt->bindValue(':id',$this->__get('id'));
+         $stmt->bindValue(':titulo',$this->__get('titulo'));
+         $stmt->bindValue(':resumo',$this->__get('resumo'));
+         $stmt->bindValue(':noticia',$this->__get('noticia'));
+         $stmt->bindValue(':tag',$this->__get('tag'));
+         $stmt->execute();
+
+         return $this;
+     }
      public  function deleteNews()
      {
          $query = "DELETE FROM materias WHERE id = :id";

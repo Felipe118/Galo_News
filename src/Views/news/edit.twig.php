@@ -6,7 +6,7 @@
 <section class="container">
     <h1 class="title-news">Editar Matérias</h1>
     <div class="form__news">
-        <form action="/News_Galo/new-materias" method="post" >
+        <form action="/News_Galo/newseditPost" method="post" >
             <div class="form__control-jor col-8 ">
                 <label for="nome" class="label-form">Titulo:</label>
                 <input type="text" name="titulo" id="" value="{{news.titulo}}" class="form-control" required>
@@ -26,7 +26,7 @@
                 <input type="text" name="tag" id="" value="{{news.tag}}" class="form-control" required>
             </div>
 
-
+            <input type="hidden" name="id" value="{{news.id}}">
             <button class="btn btn-warning btn-news"> Editar </button>
         </form>
     </div>

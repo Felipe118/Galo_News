@@ -76,13 +76,41 @@ class NoticiasController extends Controller
                 'news' => $new
             ]);
         }else{
-            return $this->view('news.edit', [
-                'message' => 'Erro essá matéria não foi cadastrada por você'
+            return $this->view('home.homeLogado', [
+                'message' => 'Erro essa matéria não foi cadastrada por você'
             ]);
         }
 
 
         //return $this->view('news.edit');
+    }
+
+    public function editNewsPost()
+    {
+        session_start();
+        $news = Container::getModel('News');
+        $id = $_POST['id'];
+        $news->__set('id',$id);
+        $news->__set('titulo',$_POST['titulo']);
+        $news->__set('resumo',$_POST['resumo']);
+        $news->__set('noticia',$_POST['noticia']);
+        $news->__set('tag',$_POST['tag']);
+
+//        echo '<pre>';
+//        var_dump($news);
+//        echo '</pre>';
+
+        $news->editNews();
+
+        $listNews = Container::getModel('News');
+        $listNews->__set('fk_jornalista',$_SESSION['id']);
+        $news = $listNews->listNews();
+
+        return $this->view('news.news',[
+            'message' => 'Matéria editada com sucesso',
+            'news' => $news
+        ]);
+
     }
 
     public  function  listNewsForJornalist()
@@ -93,5 +121,14 @@ class NoticiasController extends Controller
         $news = $listNews->listNews();
 
         return $news;
+    }
+
+    public function verifyUserLogged()
+    {
+        session_start();
+        if($_SESSION['autenticado'] == false){
+            header("location:/News_Galo/");
+        }
+
     }
 }

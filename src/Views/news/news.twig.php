@@ -24,7 +24,7 @@
 
 
     {% if message %}
-    <div class="alert alert-success col-6 d-flex justify-content-center m-auto mt-5 ">
+    <div class="alert alert-primary col-6 d-flex justify-content-center m-auto mt-5 ">
         {{message}}
     </div>
     {% endif %}

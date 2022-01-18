@@ -60,6 +60,11 @@ class Routes extends Bootstrap{
             'controller' => 'JornalistaController',
             'action' => 'createJornalistaPost'
         ];
+        $route['editJornalista'] = [
+            'route' => '/edit-jornalista',
+            'controller' => 'JornalistaController',
+            'action' => 'editJornalista'
+        ];
         $route['jorndelete'] = [
             'route' => '/jorndelete',
             'controller' => 'JornalistaController',
@@ -89,6 +94,11 @@ class Routes extends Bootstrap{
             'route' => '/news-edit',
             'controller' => 'NoticiasController',
             'action' => 'editNews'
+        ];
+        $route['newsEditPost'] = [
+            'route' => '/newseditPost',
+            'controller' => 'NoticiasController',
+            'action' => 'editNewsPost'
         ];
 
 

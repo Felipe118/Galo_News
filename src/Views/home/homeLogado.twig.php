@@ -19,6 +19,12 @@
         </nav>
        
     </header>
+    {% if message %}
+        <div class="alert-main-logado">
+            {{message}}
+        </div>
+    {% endif %}
+
 <h1>Bem vindos</h1>
 
 {% if sessao %}

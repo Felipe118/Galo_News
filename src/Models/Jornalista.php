@@ -122,6 +122,12 @@ class Jornalista extends Model
 
             return $journalist;
         }
+
+        public function editJornalista()
+        {
+            $query = "UPDATE jornalista SET nome = :nome,email = :email, senha = :senha, foto = :foto,permissao = :permissao,primeiro_acesso,:primeiro_acesso ";
+
+        }
         public function jornalistaDelete()
         {
             $query = "DELETE FROM jornalistas where id = :id";
