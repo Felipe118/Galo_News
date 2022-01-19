@@ -65,6 +65,11 @@ class Routes extends Bootstrap{
             'controller' => 'JornalistaController',
             'action' => 'editJornalista'
         ];
+        $route['editJornalistaPost'] = [
+            'route' => '/EditJornalistaPost',
+            'controller' => 'JornalistaController',
+            'action' => 'editJornalistaPost'
+        ];
         $route['jorndelete'] = [
             'route' => '/jorndelete',
             'controller' => 'JornalistaController',

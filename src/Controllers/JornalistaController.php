@@ -56,8 +56,10 @@ class JornalistaController extends Controller
         $jornalista->__set('permissao',$_POST['permissao']);
 
         $jornalista->createJornalista();
-
-        return $this->view('jornalista.create');
+        $jor = $jornalista->listJournalist();
+        return $this->view('jornalista.homeJornalista',[
+            'jornalista' => $jor
+        ]);
     }
 
     public function editJornalista()
@@ -69,9 +71,9 @@ class JornalistaController extends Controller
         $jornalista->__set('id',$id);
         $jornalistas = $jornalista->listJournalistFindOne();
 
-        echo '<pre>';
-        print_r($jornalistas);
-        echo '</pre>';
+//        echo '<pre>';
+//        print_r($jornalistas);
+//        echo '</pre>';
 
         if($jornalistas['id'] == $id){
             return $this->view('jornalista.edit',[
@@ -87,40 +89,46 @@ class JornalistaController extends Controller
     }
     public function editJornalistaPost()
     {
-        $this->verifyUserLogged();
-        $jornalista = Container::getModel('Jornalista');
-
-        if(($_FILES['foto']['name'] != ''))
-        {
-            print_r($_FILES['foto']['name']);
-            $image = $_FILES['foto'];
-            $pasta = "./assets/img/img-perfil";
-            $nameImage = $image['name'];
-            $newNameImage = $_POST['nome'].uniqid();
-            $extension = strtolower(pathinfo($nameImage, PATHINFO_EXTENSION));
-            $path = $pasta."/".$newNameImage.".".$extension;
-
-
-
-            if($extension != 'jpg' && $extension != 'png'){
-                die("Tipo de arquivo não aceito, apenas jpg e png são aceitos!");
-            }
-            $img = move_uploaded_file($image['tmp_name'],$path);
-            $jornalista->__set('foto',$path);
-        }else{
-            $jornalista->__set('foto', 'null');
-        }
-
-        $password_hash = password_hash($_POST['senha'], PASSWORD_BCRYPT);
-
-        $jornalista->__set('nome',$_POST['nome']);
-        $jornalista->__set('email',$_POST['email']);
-        $jornalista->__set('senha',$password_hash);
-        $jornalista->__set('permissao',$_POST['permissao']);
-
-        $jornalista->createJornalista();
-
-        return $this->view('jornalista.edit');
+        echo '<pre>';
+        print_r($_POST);
+        echo '</pre>';
+        echo '<pre>';
+        //print_r($_FILES['foto']);
+        echo '</pre>';
+//        $this->verifyUserLogged();
+//        $jornalista = Container::getModel('Jornalista');
+//
+//        if(($_FILES['foto']['name'] != ''))
+//        {
+//            print_r($_FILES['foto']['name']);
+//            $image = $_FILES['foto'];
+//            $pasta = "./assets/img/img-perfil";
+//            $nameImage = $image['name'];
+//            $newNameImage = $_POST['nome'].uniqid();
+//            $extension = strtolower(pathinfo($nameImage, PATHINFO_EXTENSION));
+//            $path = $pasta."/".$newNameImage.".".$extension;
+//
+//
+//
+//            if($extension != 'jpg' && $extension != 'png'){
+//                die("Tipo de arquivo não aceito, apenas jpg e png são aceitos!");
+//            }
+//            $img = move_uploaded_file($image['tmp_name'],$path);
+//            $jornalista->__set('foto',$path);
+//        }else{
+//            $jornalista->__set('foto', 'null');
+//        }
+//
+//        $password_hash = password_hash($_POST['senha'], PASSWORD_BCRYPT);
+//
+//        $jornalista->__set('nome',$_POST['nome']);
+//        $jornalista->__set('email',$_POST['email']);
+//        $jornalista->__set('senha',$password_hash);
+//        $jornalista->__set('permissao',$_POST['permissao']);
+//
+//        $jornalista->createJornalista();
+//
+//        return $this->view('jornalista.edit');
         
     }
     public function jornalistaDelete()
