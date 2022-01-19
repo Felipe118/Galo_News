@@ -62,12 +62,18 @@ class JornalistaController extends Controller
 
     public function editJornalista()
     {
-        session_start();
+        //session_start();
         $this->verifyUserLogged();
         $jornalista = Container::getModel('Jornalista');
-        $jornalistas = $jornalista->listJournalist();
+        $id = (integer)$_GET['registro'];
+        $jornalista->__set('id',$id);
+        $jornalistas = $jornalista->listJournalistFindOne();
 
-        if($jornalistas['id'] == $_SESSION['id']){
+        echo '<pre>';
+        print_r($jornalistas);
+        echo '</pre>';
+
+        if($jornalistas['id'] == $id){
             return $this->view('jornalista.edit',[
                 'jornalistas' => $jornalistas
             ]);

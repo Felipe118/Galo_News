@@ -7,7 +7,7 @@ use Src\Utils\Model\Model;
 
 class Jornalista extends Model
 
-{   
+{       private string $id;
         private string $nome;
         private string $email;
         private string $senha;
@@ -121,6 +121,18 @@ class Jornalista extends Model
             $journalist = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
             return $journalist;
+        }
+
+        public function listJournalistFindOne()
+        {
+            $query = "SELECT id,nome,email,senha,foto,permissao,primeiro_acesso FROM jornalistas WHERE id = :id";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(':id', $this->__get('id'));
+            $stmt->execute();
+
+            $jornalista = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+            return $jornalista;
         }
 
         public function editJornalista()
