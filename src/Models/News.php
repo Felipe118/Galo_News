@@ -78,6 +78,17 @@
          $stmt->execute();
      }
 
+     public function listNewsAll()
+     {
+         $query = 'SELECT * FROM materias';
+         $stmt = $this->db->prepare($query);
+         $stmt->execute();
+
+         $news = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+
+         return $news;
+     }
+
 
 
  }

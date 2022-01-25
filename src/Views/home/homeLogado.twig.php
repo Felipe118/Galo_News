@@ -25,10 +25,17 @@
         </div>
     {% endif %}
 
-<h1>Bem vindos</h1>
+    {% for new in news %}
 
-{% if sessao %}
-    <h1>Jornalista</h1>
-{% endif %}
+    <div class="box__news">
+        <a href="" class=box__link><img class="box__img" src="./assets/img/finans.jpg" alt=""> </a>
+        <div class="bom__text-img">
+            <a href="" class="box__link">
+                <h1 class="box__title"> {{new.titulo}} </h1>
+            <p class="box__resume"> {{new.resumo}}</p>
+            </a>
+        </div>
 
+    </div>
+    {% endfor %}
 {% endblock %}
