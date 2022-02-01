@@ -8,7 +8,8 @@ use Src\Utils\Model\Container;
 class NoticiasController extends Controller
 {
     public  function  materias()
-    {   session_start();
+    {
+        $this->verifyUserLogged();
         $listNews = Container::getModel('News');
         $listNews->__set('fk_jornalista',$_SESSION['id']);
         $news = $listNews->listNews();
@@ -20,14 +21,37 @@ class NoticiasController extends Controller
 
     public function createMaterias()
     {
+        $this->verifyUserLogged();
         return $this->view('news.create');
     }
 
     public function createMateriasPost()
     {
-        session_start();
-
+        $this->verifyUserLogged();
         $noticias = Container::getModel('News');
+
+
+        if(($_FILES['imagem']['name'] != '')){
+            print_r($_FILES['imagem']['name']);
+            $image = $_FILES['imagem'];
+            $pasta = "./assets/img/img-materias";
+            $nameImage = $image['name'];
+            $newNameImage = $_POST['nome'].uniqid();
+            $extension = strtolower(pathinfo($nameImage, PATHINFO_EXTENSION));
+            $path = $pasta."/".$newNameImage.".".$extension;
+
+
+
+            if($extension != 'jpg' && $extension != 'png'){
+                die("Tipo de arquivo não aceito, apenas jpg e png são aceitos!");
+            }
+            $img = move_uploaded_file($image['tmp_name'],$path);
+            $noticias->__set('imagem',$path);
+        }else{
+            $noticias->__set('imagem', 'null');
+        }
+
+
         $noticias->__set('titulo',$_POST['titulo']);
         $noticias->__set('resumo',$_POST['resumo']);
         $noticias->__set('noticia',$_POST['noticia']);
@@ -48,11 +72,10 @@ class NoticiasController extends Controller
 
     public function deleteNews()
     {
-
+        $this->verifyUserLogged();
         $noticias = Container::getModel('News');
         $noticias->__set('id',$_POST['id']);
         $noticias->deleteNews();
-        session_start();
         $listNews = Container::getModel('News');
         $listNews->__set('fk_jornalista',$_SESSION['id']);
         $news = $listNews->listNews();
@@ -65,6 +88,7 @@ class NoticiasController extends Controller
 
     public function editNews()
     {
+        $this->verifyUserLogged();
         session_start();
         $listNews = Container::getModel('News');
         $id = $_GET['registro'];
@@ -87,6 +111,7 @@ class NoticiasController extends Controller
 
     public function editNewsPost()
     {
+        $this->verifyUserLogged();
         session_start();
         $news = Container::getModel('News');
         $id = $_POST['id'];

@@ -5,7 +5,11 @@
 {% block body %}
 
 <section class="col-12 marcador ">
-
+    {% if message %}
+    <div class="alert alert-primary col-6 d-flex justify-content-center m-auto mt-5 ">
+        {{message}}
+    </div>
+    {% endif %}
 
 <div class="container-fluid col-12 margin mt-5">
 <div class="card-body p-0 col-md-8" style="margin:0 auto">

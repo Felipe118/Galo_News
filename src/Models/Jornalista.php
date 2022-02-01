@@ -7,7 +7,7 @@ use Src\Utils\Model\Model;
 
 class Jornalista extends Model
 
-{       private string $id;
+{       private int $id;
         private string $nome;
         private string $email;
         private string $senha;
@@ -137,7 +137,18 @@ class Jornalista extends Model
 
         public function editJornalista()
         {
-            $query = "UPDATE jornalista SET nome = :nome,email = :email, senha = :senha, foto = :foto,permissao = :permissao,primeiro_acesso,:primeiro_acesso ";
+            $query = "UPDATE jornalistas SET nome = :nome,email = :email,foto = :foto,permissao = :permissao,primeiro_acesso = :primeiro_acesso WHERE id = :id ";
+            $stmt = $this->db->prepare($query);
+            $stmt->bindValue(':nome',$this->__get('nome'));
+            $stmt->bindValue(':email',$this->__get('email'));
+            $stmt->bindValue(':foto',$this->__get('foto'));
+            $stmt->bindValue(':permissao',$this->__get('permissao'));
+            $stmt->bindValue(':primeiro_acesso',$this->__get('primeiro_acesso'));
+            $stmt->bindValue(':id',$this->__get('id'));
+
+            $stmt->execute();
+
+            return $this;
 
         }
         public function jornalistaDelete()

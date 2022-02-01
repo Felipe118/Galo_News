@@ -1,9 +1,7 @@
-
 .box__news{
    
     display: flex;
     border-bottom: 1px solid gray;
-    justify-content: space-between;
     padding: 1rem;
     width: 70%;
   

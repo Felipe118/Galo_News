@@ -6,14 +6,14 @@
 <section class="container">
     <h1 class="title__create">Editar Matérias</h1>
     <div class="form__jornalista">
-        <form action="/News_Galo/EditJornalistaPost" method="post" >
+        <form action="/News_Galo/EditJornalistaPost" method="post" enctype="multipart/form-data">
             <div class="form__control-jor col-8 ">
                 <label for="nome" class="label-form">Nome:</label>
-                <input type="text" name="titulo" id="" value="{{jornalistas.nome}}" class="form-control" required>
+                <input type="text" name="nome" id="" value="{{jornalistas.nome}}" class="form-control" required>
             </div>
             <div class="form__control-jor  col-8">
                 <label for="nome" class="label-form">Email:</label>
-                <input type="text" name="resumo" id="" value="{{jornalistas.email}}" class="form-control" required>
+                <input type="text" name="email" id="" value="{{jornalistas.email}}" class="form-control" required>
             </div>
             <div class="form__control-jor">
                 <label for="" class="label-form">Permisão:</label>
@@ -48,7 +48,7 @@
 
             <div class="form__control-jor col-6">
                 <label for="" class="label-form">Foto:</label>
-                <input type="file" name="foto" class="form-control" alt="fotos" accept=".jpg, .png, .jpeg">
+                <input type="file" name="foto" value="{{ jornalistas.foto ? jornalistas.foto : '' }}"  class="form-control" alt="fotos" accept=".jpg, .png, .jpeg">
             </div>
 
             <input type="hidden" name="id" value="{{jornalistas.id}}">

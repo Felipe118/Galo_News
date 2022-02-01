@@ -9,6 +9,7 @@
     private string $titulo;
     private string $resumo;
     private string $noticia;
+    private  string $imagem;
     private string $tag;
     private  int $fk_jornalista;
 
@@ -21,10 +22,11 @@
 
      public function createNews()
      {
-         $query = "INSERT INTO materias(titulo,resumo,noticia,tag,fk_jornalista) VALUES(:titulo,:resumo,:noticia,:tag,:fk_jornalista);";
+         $query = "INSERT INTO materias(titulo,resumo,imagem,noticia,tag,fk_jornalista) VALUES(:titulo,:resumo,:imagem,:noticia,:tag,:fk_jornalista);";
          $stmt = $this->db->prepare($query);
          $stmt->bindValue(':titulo',$this->__get('titulo'));
          $stmt->bindValue(':resumo',$this->__get('resumo'));
+         $stmt->bindValue(':imagem',$this->__get('imagem'));
          $stmt->bindValue(':noticia',$this->__get('noticia'));
          $stmt->bindValue(':tag',$this->__get('tag'));
          $stmt->bindValue(':fk_jornalista',$this->__get('fk_jornalista'));
