@@ -22,7 +22,8 @@
             selector: '#noticia'
         });
     </script>
-    {% block header %}{%endblock%}
+    {% block header %}
+    {% endblock %}
 </head>
 <body>
 <header>

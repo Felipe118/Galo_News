@@ -49,7 +49,7 @@
      }
      public  function  listNewsOneEdit()
      {
-         $query = "SELECT id,titulo,resumo,noticia,tag,fk_jornalista FROM materias WHERE id = :id";
+         $query = "SELECT id,titulo,resumo,imagem,noticia,tag,fk_jornalista FROM materias WHERE id = :id";
          $stmt = $this->db->prepare($query);
          $stmt->bindValue(':id',$this->__get('id'));
          $stmt->execute();

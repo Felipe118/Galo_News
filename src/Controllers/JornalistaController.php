@@ -64,7 +64,7 @@ class JornalistaController extends Controller
 
     public function editJornalista()
     {
-        //session_start();
+
         $this->verifyUserLogged();
         $jornalista = Container::getModel('Jornalista');
         $id = (integer)$_GET['registro'];
@@ -89,9 +89,6 @@ class JornalistaController extends Controller
     }
     public function editJornalistaPost()
     {
-
-
-
         $this->verifyUserLogged();
         $jornalista = Container::getModel('Jornalista');
 //        echo '<pre>';
@@ -101,7 +98,7 @@ class JornalistaController extends Controller
 //        die();
         if(($_FILES['foto']['name'] != ''))
         {
-            print_r($_FILES['foto']['name']);
+            //print_r($_FILES['foto']['name']);
             $image = $_FILES['foto'];
             $pasta = "./assets/img/img-perfil";
             $nameImage = $image['name'];

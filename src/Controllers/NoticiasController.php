@@ -31,8 +31,9 @@ class NoticiasController extends Controller
         $noticias = Container::getModel('News');
 
 
+
         if(($_FILES['imagem']['name'] != '')){
-            print_r($_FILES['imagem']['name']);
+
             $image = $_FILES['imagem'];
             $pasta = "./assets/img/img-materias";
             $nameImage = $image['name'];
@@ -89,7 +90,6 @@ class NoticiasController extends Controller
     public function editNews()
     {
         $this->verifyUserLogged();
-        session_start();
         $listNews = Container::getModel('News');
         $id = $_GET['registro'];
         $listNews->__set('id',$id);
@@ -112,9 +112,34 @@ class NoticiasController extends Controller
     public function editNewsPost()
     {
         $this->verifyUserLogged();
-        session_start();
         $news = Container::getModel('News');
         $id = $_POST['id'];
+        echo '<pre>';
+        print_r($_POST);
+        print_r($_FILES);
+        echo '</pre>';
+        die();
+
+
+        if(($_FILES['imagem']['name'] != '')){
+
+            $image = $_FILES['imagem'];
+            $pasta = "./assets/img/img-materias";
+            $nameImage = $image['name'];
+            $newNameImage = $_POST['nome'].uniqid();
+            $extension = strtolower(pathinfo($nameImage, PATHINFO_EXTENSION));
+            $path = $pasta."/".$newNameImage.".".$extension;
+
+            if($extension != 'jpg' && $extension != 'png'){
+                die("Tipo de arquivo não aceito, apenas jpg e png são aceitos!");
+            }
+            $img = move_uploaded_file($image['tmp_name'],$path);
+            $news->__set('imagem',$path);
+        }else{
+            $news->__set('imagem', 'null');
+        }
+
+
         $news->__set('id',$id);
         $news->__set('titulo',$_POST['titulo']);
         $news->__set('resumo',$_POST['resumo']);
