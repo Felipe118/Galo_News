@@ -37,7 +37,7 @@ class NoticiasController extends Controller
             $image = $_FILES['imagem'];
             $pasta = "./assets/img/img-materias";
             $nameImage = $image['name'];
-            $newNameImage = $_POST['nome'].uniqid();
+            $newNameImage = $_POST['titulo'].uniqid();
             $extension = strtolower(pathinfo($nameImage, PATHINFO_EXTENSION));
             $path = $pasta."/".$newNameImage.".".$extension;
 
@@ -114,11 +114,11 @@ class NoticiasController extends Controller
         $this->verifyUserLogged();
         $news = Container::getModel('News');
         $id = $_POST['id'];
-        echo '<pre>';
-        print_r($_POST);
-        print_r($_FILES);
-        echo '</pre>';
-        die();
+//        echo '<pre>';
+//        print_r($_POST);
+//        print_r($_FILES);
+//        echo '</pre>';
+//        die();
 
 
         if(($_FILES['imagem']['name'] != '')){
