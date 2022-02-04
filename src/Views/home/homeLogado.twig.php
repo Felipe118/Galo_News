@@ -28,7 +28,7 @@
     {% for new in news %}
 
     <div class="box__news">
-        <a href="" class=box__link><img class="box__img" src="./assets/img/finans.jpg" alt=""> </a>
+        <a href="/News_Galo/renderNew?new={{new.id}}" class=box__link><img class="box__img" src="./assets/img/finans.jpg" alt=""> </a>
         <div class="bom__text-img">
             <a href="" class="box__link">
                 <h1 class="box__title"> {{new.titulo}} </h1>

@@ -105,6 +105,11 @@ class Routes extends Bootstrap{
             'controller' => 'NoticiasController',
             'action' => 'editNewsPost'
         ];
+        $route['renderNew'] = [
+            'route' => '/renderNew',
+            'controller' => 'NoticiasController',
+            'action' => 'renderNew'
+        ];
 
 
         $this->setRoutes($route);
