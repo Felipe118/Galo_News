@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="./assets/css/news.css">
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/modal.css">
+    <link rel="stylesheet" href="./assets/css/render.css">
     <link rel="stylesheet" href="./assets/css/box.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel = "shortcut icon" type = "imagem/x-icon" href = "/img/logo_galo.svg"/>
@@ -41,7 +42,9 @@
 </header>
 
 
-{% block body %}{% endblock %}
+{% block body %}
+
+{% endblock %}
 <!--<footer>&copy; Rodape</footer>-->
 
 

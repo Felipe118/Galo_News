@@ -37,7 +37,7 @@ class NoticiasController extends Controller
             $image = $_FILES['imagem'];
             $pasta = "./assets/img/img-materias";
             $nameImage = $image['name'];
-            $newNameImage = $_POST['titulo'].uniqid();
+            $newNameImage = uniqid();
             $extension = strtolower(pathinfo($nameImage, PATHINFO_EXTENSION));
             $path = $pasta."/".$newNameImage.".".$extension;
 
@@ -190,8 +190,15 @@ class NoticiasController extends Controller
         $listNews->__set('id',$id);
         $new = $listNews->listNewsOneEdit();
 
+
+        $jorna = Container::getModel('Jornalista');
+        $jornalista_id = $new['fk_jornalista'];
+        $jorna->__set('id',$jornalista_id);
+        $jornalista = $jorna->listJournalistFindOne();
+
         return $this->view('news.renderNew',[
-            'news' => $new
+            'news' => $new,
+            'jornalista' => $jornalista
         ]);
 
     }

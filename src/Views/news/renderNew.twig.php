@@ -3,18 +3,30 @@
 {% block title %}News Galo{%endblock%}
 
 {% block body %}
-    <div class="conntainer-fluid">
-        <h1>{{news.titulo}}</h1>
+    <div class="container col col-8 render">
+        <h1 class="render__title" >{{news.titulo}}</h1>
+        <p class="render__resumo">{{news.resumo}}</p>
+        <span class="render__span">Por {{jornalista.nome}} </span><br>
+        <span class="render__span">Postada em {{news.data}} </span>
         
-        <div>
-            <img src="{{news.imagem}}">
+        <div class="render__img ">
+            <img class="img-fluid" src="{{news.imagem}}">
         </div>
 
-        <div>
 
-                {{news.noticia}}
 
+        </article>
+        <div class="render__text">
+            {% autoescape 'html' %}
+                {{ news.noticia|raw }}
+            {% endautoescape %}
+        </div>
+        <div class="render__tags">
+            <h3 class="render__tag">Tags</h3>
+            <span class="tag">{{ news.tag }}</span>
         </div>
     </div>
-
+<!--    <div class="publicidadde_1   ">-->
+<!---->
+<!--    </div>-->
 {% endblock %}
