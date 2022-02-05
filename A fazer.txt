@@ -1,0 +1,3 @@
+- Melhorar e criar outra tecnica para edição de imagens
+- Responsividade
+- publicidade
