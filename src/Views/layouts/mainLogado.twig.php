@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="./assets/css/header.css">
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/modal.css">
+    <link rel="stylesheet" href="./assets/css/footer.css">
     <link rel="stylesheet" href="./assets/css/box.css">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@1,600&display=swap" rel="stylesheet">
     <title>{% block title %}{%endblock%}</title>
@@ -17,6 +18,8 @@
    
  
     {% block body %}{% endblock %}
-   <!--<footer>&copy; Rodape</footer>-->
+    <footer>
+        <span class="txt-footer"> Todos os direitos reservados &copy; </span>
+    </footer>
 </body>
 </html>

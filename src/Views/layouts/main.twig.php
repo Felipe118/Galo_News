@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./assets/css/header.css">
     <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/footer.css">
     <link rel="stylesheet" href="./assets/css/modal.css">
     <link rel="stylesheet" href="./assets/css/box.css">
     <link rel = "shortcut icon" type = "imagem/x-icon" href = "./assets/img/logo_galo.svg"/>
@@ -33,6 +34,8 @@
        
     </header>
     {% block body %}{% endblock %}
-   <!--<footer>&copy; Rodape</footer>-->
+    <footer>
+        <span class="txt-footer"> Todos os direitos reservados &copy; </span>
+    </footer>
 </body>
 </html>
