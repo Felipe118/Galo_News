@@ -34,8 +34,10 @@
         <ul class="list">
             <li class="list__item"><a href="/News_Galo/homeLogado" class="list__link">Home</a></li>
             <li class="list__item"><a href="/News_Galo/materias" class="list__link">Matérias</a></li>
-            <li class="list__item"><a href="#" class="list__link">Notícias</a></li>
+            <li class="list__item"><a href="#" class="list__link">Notícias</a>
+            {% if session %}
             <li class="list__item"><a href="/News_Galo/jornalista" class="list__link">Jornalistas</a></li>
+            {% endif %}
         </ul>
         <a href=" /News_Galo/logout" class="btn-login ">Sair</a>
 

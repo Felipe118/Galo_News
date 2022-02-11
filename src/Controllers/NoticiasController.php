@@ -10,12 +10,14 @@ class NoticiasController extends Controller
     public  function  materias()
     {
         $this->verifyUserLogged();
+        $session = $this->permissao();
         $listNews = Container::getModel('News');
         $listNews->__set('fk_jornalista',$_SESSION['id']);
         $news = $listNews->listNews();
 
         return $this->view('news.news',[
-            'news' => $news
+            'news' => $news,
+            'session' => $session
         ]);
     }
 
@@ -172,16 +174,6 @@ class NoticiasController extends Controller
 
         return $news;
     }
-
-    public function verifyUserLogged()
-    {
-        session_start();
-        if($_SESSION['autenticado'] == false){
-            header("location:/News_Galo/");
-        }
-
-    }
-
     public function renderNew()
     {
         $this->verifyUserLogged();
@@ -202,4 +194,24 @@ class NoticiasController extends Controller
         ]);
 
     }
+
+    public function verifyUserLogged()
+    {
+        session_start();
+        if($_SESSION['autenticado'] == false){
+            header("location:/News_Galo/");
+        }
+
+    }
+
+    public function permissao()
+    {
+        if($_SESSION['permissao'] === 'admin'){
+            $sessao = $_SESSION['permissao'];
+
+            return $sessao;
+        }
+    }
+
+
 }

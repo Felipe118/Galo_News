@@ -25,8 +25,6 @@
                 <li class="list__item"><a href="#" class="list__link">Titúlos</a></li>
                 <li class="list__item"><a href="#" class="list__link">Notícias</a></li>
                 <li class="list__item"><a href="#" class="list__link">Jornalistas</a></li>
-
-                
             </ul>
             <a href="/News_Galo/auth" class="btn-login ">ENTRAR</a>
            
