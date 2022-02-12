@@ -10,7 +10,7 @@
     <title>Login</title>
 </head>
 <body>
-   
+
  <form action="/News_Galo/authPost" method="POST">
      <div class="form">
         <div class="form-control">

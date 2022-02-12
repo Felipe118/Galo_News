@@ -32,8 +32,6 @@ class NoticiasController extends Controller
         $this->verifyUserLogged();
         $noticias = Container::getModel('News');
 
-
-
         if(($_FILES['imagem']['name'] != '')){
 
             $image = $_FILES['imagem'];
@@ -42,8 +40,6 @@ class NoticiasController extends Controller
             $newNameImage = uniqid();
             $extension = strtolower(pathinfo($nameImage, PATHINFO_EXTENSION));
             $path = $pasta."/".$newNameImage.".".$extension;
-
-
 
             if($extension != 'jpg' && $extension != 'png'){
                 die("Tipo de arquivo não aceito, apenas jpg e png são aceitos!");

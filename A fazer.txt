@@ -1,3 +1,5 @@
 - Melhorar e criar outra tecnica para edição de imagens
 - Responsividade
 - publicidade
+
+query datas mais recentes : select *, max(`data`) as data_recentes  from materias group by `data` order by `data` DESC

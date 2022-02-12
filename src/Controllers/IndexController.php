@@ -16,8 +16,6 @@
             session_start();
             $news = Container::getModel('News');
             $new = $news->listNewsAll();
-
-            
             if($_SESSION['permissao'] === 'admin'){
                 return $this->view('home.homeLogado', [
                     'sessao' => $_SESSION['permissao'],

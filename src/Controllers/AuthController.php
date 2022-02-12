@@ -9,56 +9,34 @@ class AuthController extends Controller
     {
         public function auth()
         {
-           
-                return $this->view('auth.auth');
-          
+            return $this->view('auth.auth');
         }
         public function authPost()
         {
-            try{
 
-                $jornalista = Container::getModel('Jornalista');
-                $jornalista->__set('email', $_POST['email']);
-              
-                    $jornalista->Auth();
+            $jornalista = Container::getModel('Jornalista');
+            $jornalista->__set('email', $_POST['email']);
+            $jornalista->Auth();
+            $pass =  $jornalista->__get('senha');
 
-                  
-                        $pass =  $jornalista->__get('senha');
-                  
-        
-                        if ( password_verify($_POST['senha'], $pass) ) {
-                            session_start();
+            if ( password_verify($_POST['senha'], $pass) ) {
+                session_start();
+                $_SESSION['id'] = $jornalista->__get('id');
+                $_SESSION['nome']  = $jornalista->__get('nome');
+                $_SESSION['email']  = $jornalista->__get('email');
+                $_SESSION['permissao']  = $jornalista->__get('permissao');
+                $_SESSION['autenticado'] = true;
             
-                            $_SESSION['id'] = $jornalista->__get('id');
-                            $_SESSION['nome']  = $jornalista->__get('nome');
-                            $_SESSION['email']  = $jornalista->__get('email');
-                            $_SESSION['permissao']  = $jornalista->__get('permissao');
-                            $_SESSION['autenticado'] = true;
-            
-                           
-                            if ($jornalista->__get('primeiro_acesso') == 'sim') {
-                                return header('Location: /News_Galo/auth-first');
-                            } 
-                           
-                           
-                            return header('Location: /News_Galo/homeLogado');
-            
-                        
-                            
-                        } else {
-                            header('Location: /News_Galo/auth?erro=login');
-                        }
-                 
-                
-                   
-               
-               
+                if ($jornalista->__get('primeiro_acesso') == 'sim') {
+                    return header('Location: /News_Galo/auth-first');
+                }
 
-            }catch(Throwable $erro){
-                echo "ERRO:".$erro->getMessage();
+               return header('Location: /News_Galo/homeLogado');
+            
+            } else {
+                header('Location: /News_Galo/auth?erro=login');
             }
-           
-                // return $this->view('auth.auth');
+            // return $this->view('auth.auth');
           
         }
         public  function authFirstAcess()
@@ -84,7 +62,6 @@ class AuthController extends Controller
             $nome = $_SESSION['nome'];
             $first_acess = 'nao';
             $jornalista = Container::getModel('jornalista');
-    
     
     
             $jornalista->__set('nome', $nome);
