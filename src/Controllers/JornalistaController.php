@@ -21,6 +21,7 @@ class JornalistaController extends Controller
         $this->verifyUserLogged();
         return $this->view('jornalista.create');
     }
+
     public function createJornalistaPost()
     {
         $this->verifyUserLogged();
@@ -35,8 +36,6 @@ class JornalistaController extends Controller
             $extension = strtolower(pathinfo($nameImage, PATHINFO_EXTENSION));
             $path = $pasta."/".$newNameImage.".".$extension;
 
-          
-
             if($extension != 'jpg' && $extension != 'png'){
                 die("Tipo de arquivo não aceito, apenas jpg e png são aceitos!");
             }
@@ -45,8 +44,6 @@ class JornalistaController extends Controller
         }else{
             $jornalista->__set('foto', 'null');
         }
-
-       
 
         $password_hash = password_hash($_POST['senha'], PASSWORD_BCRYPT);
 
@@ -71,10 +68,6 @@ class JornalistaController extends Controller
         $jornalista->__set('id',$id);
         $jornalistas = $jornalista->listJournalistFindOne();
 
-//        echo '<pre>';
-//        print_r($jornalistas);
-//        echo '</pre>';
-
         if($jornalistas['id'] == $id){
             return $this->view('jornalista.edit',[
                 'jornalistas' => $jornalistas
@@ -87,34 +80,43 @@ class JornalistaController extends Controller
 
 
     }
+
     public function editJornalistaPost()
     {
         $this->verifyUserLogged();
         $jornalista = Container::getModel('Jornalista');
-//        echo '<pre>';
-//        print_r($_FILES);
-//        print_r($_POST);
-//        echo '</pre>';
-//        die();
-        if(($_FILES['foto']['name'] != ''))
-        {
-            //print_r($_FILES['foto']['name']);
-            $image = $_FILES['foto'];
-            $pasta = "./assets/img/img-perfil";
-            $nameImage = $image['name'];
-            $newNameImage = $_POST['nome'].'-'.uniqid();
-            $extension = strtolower(pathinfo($nameImage, PATHINFO_EXTENSION));
-            $path = $pasta."/".$newNameImage.".".$extension;
+        $id = $_POST['id'];
+
+        $jornalistaFindOne = Container::getModel('Jornalista');
+        $jornalistaFindOne->__set('id',$id);
+
+        $jornalista_one = $jornalistaFindOne->listJournalistFindOne();
 
 
+        if(($_FILES['foto']['name'] != '')) {
 
-            if($extension != 'jpg' && $extension != 'png'){
-                die("Tipo de arquivo não aceito, apenas jpg e png são aceitos!");
+            if(empty($jornalista_one['foto'])){
+                $image = $_FILES['foto'];
+                $pasta = "./assets/img/img-perfil";
+                $nameImage = $image['name'];
+                $newNameImage = $_POST['nome'].'-'.uniqid();
+                $extension = strtolower(pathinfo($nameImage, PATHINFO_EXTENSION));
+                $path = $pasta."/".$newNameImage.".".$extension;
+
+                if($extension != 'jpg' && $extension != 'png'){
+                    die("Tipo de arquivo não aceito, apenas jpg e png são aceitos!");
+                }
+                $img = move_uploaded_file($image['tmp_name'],$path);
+                $jornalista->__set('foto',$path);
             }
-            $img = move_uploaded_file($image['tmp_name'],$path);
-            $jornalista->__set('foto',$path);
+
         }else{
-            $jornalista->__set('foto', 'null');
+            if(!empty($jornalista_one['foto'])){
+                $jornalista->__set('foto', $jornalista_one['foto']);
+            }else{
+                $jornalista->__set('foto', '');
+            }
+
         }
 
         //$password_hash = password_hash($_POST['senha'], PASSWORD_BCRYPT);
@@ -134,6 +136,7 @@ class JornalistaController extends Controller
         ]);
         
     }
+
     public function jornalistaDelete()
     {
         $this->verifyUserLogged();
@@ -144,13 +147,13 @@ class JornalistaController extends Controller
         return header("Location: /News_Galo/jornalista");
       
     }
+
     public function verifyUserLogged()
     {
         session_start();
         if($_SESSION['autenticado'] == false){
             header("location:/News_Galo/");
         }
-       
     }
 
 

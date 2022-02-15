@@ -73,11 +73,15 @@ class NoticiasController extends Controller
     {
         $this->verifyUserLogged();
         $noticias = Container::getModel('News');
+
         $noticias->__set('id',$_POST['id']);
         $noticias->deleteNews();
         $listNews = Container::getModel('News');
         $listNews->__set('fk_jornalista',$_SESSION['id']);
         $news = $listNews->listNews();
+
+
+
 
         return $this->view('news.news',[
             'message' => 'Matéria deletada com sucesso',
@@ -110,49 +114,52 @@ class NoticiasController extends Controller
     public function editNewsPost()
     {
         $this->verifyUserLogged();
-        $news = Container::getModel('News');
+        $new = Container::getModel('News');
         $id = $_POST['id'];
-//        echo '<pre>';
-//        print_r($_POST);
-//        print_r($_FILES);
-//        echo '</pre>';
-//        die();
-
-
-        if(($_FILES['imagem']['name'] != '')){
-
-            $image = $_FILES['imagem'];
-            $pasta = "./assets/img/img-materias";
-            $nameImage = $image['name'];
-            $newNameImage = $_POST['nome'].uniqid();
-            $extension = strtolower(pathinfo($nameImage, PATHINFO_EXTENSION));
-            $path = $pasta."/".$newNameImage.".".$extension;
-
-            if($extension != 'jpg' && $extension != 'png'){
-                die("Tipo de arquivo não aceito, apenas jpg e png são aceitos!");
-            }
-            $img = move_uploaded_file($image['tmp_name'],$path);
-            $news->__set('imagem',$path);
-        }else{
-            $news->__set('imagem', 'null');
-        }
-
-
-        $news->__set('id',$id);
-        $news->__set('titulo',$_POST['titulo']);
-        $news->__set('resumo',$_POST['resumo']);
-        $news->__set('noticia',$_POST['noticia']);
-        $news->__set('tag',$_POST['tag']);
-
-//        echo '<pre>';
-//        var_dump($news);
-//        echo '</pre>';
-
-        $news->editNews();
+        $new->__set('id',$id);
 
         $listNews = Container::getModel('News');
         $listNews->__set('fk_jornalista',$_SESSION['id']);
+
         $news = $listNews->listNews();
+
+        $listOne = Container::getModel('News');
+        $listOne->__set('id',$id);
+        $new_one = $listOne->listNewsOneEdit();
+
+        if(($_FILES['imagem']['name'] != '')){
+
+            if(empty($new_one['imagem'])){
+                //echo 'Imagem Vazia';
+                $image = $_FILES['imagem'];
+                $pasta = "./assets/img/img-materias";
+                $nameImage = $image['name'];
+                $newNameImage = uniqid();
+                $extension = strtolower(pathinfo($nameImage, PATHINFO_EXTENSION));
+                $path = $pasta."/".$newNameImage.".".$extension;
+
+                if($extension != 'jpg' && $extension != 'png'){
+                    die("Tipo de arquivo não aceito, apenas jpg e png são aceitos!");
+                }
+                $img = move_uploaded_file($image['tmp_name'],$path);
+                $new->__set('imagem',$path);
+            }
+        }else{
+
+            if(!empty($new_one['imagem'])){
+                $new->__set('imagem', $new_one['imagem']);
+            }else{
+                $new->__set('imagem', 'null');
+            }
+        }
+
+        $new->__set('titulo',$_POST['titulo']);
+        $new->__set('resumo',$_POST['resumo']);
+        $new->__set('noticia',$_POST['noticia']);
+        $new->__set('tag',$_POST['tag']);
+
+
+        $new->editNews();
 
         return $this->view('news.news',[
             'message' => 'Matéria editada com sucesso',
@@ -170,6 +177,7 @@ class NoticiasController extends Controller
 
         return $news;
     }
+
     public function renderNew()
     {
         $this->verifyUserLogged();

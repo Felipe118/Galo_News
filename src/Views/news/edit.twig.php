@@ -17,7 +17,7 @@
             </div>
             <div class="form__control-jor col-8">
                 <label for="" class="label-form">Imagem:</label>
-                <input type="file"   name="imagem" value="{{ news.imagem ? news.imagem : '' }}" class="form-control" alt="imagens" accept=".jpg, .png, .jpeg">
+                <input type="file"   name="imagem" class="form-control" alt="imagens" accept=".jpg, .png, .jpeg">
             </div>
             <div class="form__control-jor col-8">
                 <h3>Matéria</h3><br><br>

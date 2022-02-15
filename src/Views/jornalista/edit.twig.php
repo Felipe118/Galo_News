@@ -48,7 +48,7 @@
 
             <div class="form__control-jor col-6">
                 <label for="" class="label-form">Foto:</label>
-                <input type="file" name="foto" value="{{ jornalistas.foto ? jornalistas.foto : '' }}"  class="form-control" alt="fotos" accept=".jpg, .png, .jpeg">
+                <input type="file" name="foto"  class="form-control" alt="fotos" accept=".jpg, .png, .jpeg">
             </div>
 
             <input type="hidden" name="id" value="{{jornalistas.id}}">

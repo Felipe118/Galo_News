@@ -38,7 +38,7 @@
 
      public function listNews()
      {
-         $query = "SELECT id,titulo,resumo,noticia,tag,fk_jornalista FROM materias where fk_jornalista = :fk_jornalista";
+         $query = "SELECT id,titulo,resumo,imagem,noticia,tag,fk_jornalista FROM materias where fk_jornalista = :fk_jornalista";
          $stmt = $this->db->prepare($query);
          $stmt->bindValue(':fk_jornalista',$this->__get('fk_jornalista'));
          $stmt->execute();
@@ -61,11 +61,12 @@
 
      public function editNews()
      {
-         $query = "UPDATE materias SET titulo = :titulo,resumo = :resumo, noticia = :noticia, tag = :tag WHERE id = :id ";
+         $query = "UPDATE materias SET titulo = :titulo,resumo = :resumo,imagem = :imagem, noticia = :noticia, tag = :tag WHERE id = :id ";
          $stmt = $this->db->prepare($query);
          $stmt->bindValue(':id',$this->__get('id'));
          $stmt->bindValue(':titulo',$this->__get('titulo'));
          $stmt->bindValue(':resumo',$this->__get('resumo'));
+         $stmt->bindValue(':imagem',$this->__get('imagem'));
          $stmt->bindValue(':noticia',$this->__get('noticia'));
          $stmt->bindValue(':tag',$this->__get('tag'));
          $stmt->execute();
