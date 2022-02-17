@@ -92,6 +92,17 @@
          return $news;
      }
 
+     public function listNewsRecents()
+     {
+         $query = 'select id,titulo,resumo,imagem,noticia,tag,`data`  as data_recentes  from materias group by `data` order by `data` DESC';
+         $stmt = $this->db->prepare($query);
+         $stmt->execute();
+         $news = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+         return $news;
+     }
+
+
+     //select *, max(`data`) as data_recentes  from materias group by `data` order by `data` DESC
 
 
  }
