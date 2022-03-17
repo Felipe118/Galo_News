@@ -8,7 +8,7 @@ class Conn{
         public static function getDB(){
             try{
                 $conn = new \PDO(
-                    'mysql:host=localhost;dbname=db_news;charset=utf8',
+                    'mysql:host=127.0.0.1;dbname=db_news;charset=utf8',
                     "root",
                     "root"
                 );

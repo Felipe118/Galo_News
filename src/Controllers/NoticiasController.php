@@ -180,7 +180,6 @@ class NoticiasController extends Controller
 
     public function renderNew()
     {
-        $this->verifyUserLogged();
         $id = $_GET['new'];
         $listNews = Container::getModel('News');
         $listNews->__set('id',$id);
