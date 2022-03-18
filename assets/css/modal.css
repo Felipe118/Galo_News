@@ -34,6 +34,8 @@
     width: 570px;
     height: 620px;
     border-radius: 5px;
+    background-size: cover;
+    background-position: center;
 }
 .img__principal:hover{
     -webkit-transform:scale(1.03);

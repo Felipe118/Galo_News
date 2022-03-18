@@ -12,17 +12,11 @@
             //session_start();
             $news = Container::getModel('News');
             $new = $news->listNewsRecents();
-            $first_news = array_splice($new,3,-3);
-        //    echo '<pre>';
-        //     print_r($first_news[0]['titulo']);
-        //     echo '</pre>';
-         
-            //die;
             return $this->view('home.home', [
                 'news' => $new,
-                'capaOne' => $first_news[0],
-                'capaTwo' =>  $first_news[1],
-                'capaTree' => $first_news[2],
+                'capaOne' => $new[0],
+                'capaTwo' =>  $new[1],
+                'capaTree' => $new[2],
             ]);
         }
         public function homeLogado()

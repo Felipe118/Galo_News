@@ -34,7 +34,7 @@ class Jornalista extends Model
                $stmt->execute();
                 $jornalista = $stmt->fetch(\PDO::FETCH_ASSOC);
     
-                if($jornalista['id'] != '' && $jornalista['email'] != '' && $jornalista['permissao'] !='' ){
+                if(isset($jornalista['id']) != '' && isset($jornalista['email']) != ''&& isset($jornalista['permissao']) !='' ){
                     $this->__set('id',$jornalista['id'] );
                     $this->__set('nome', $jornalista['nome']);
                     $this->__set('senha', $jornalista['senha']);
@@ -42,6 +42,8 @@ class Jornalista extends Model
                     $this->__set('permissao',$jornalista['permissao'] );
                     $this->__set('primeiro_acesso', $jornalista['primeiro_acesso']);
     
+                }else{
+                    header('Location: /News_Galo/auth?erro=login');
                 }
                 return $this;
               

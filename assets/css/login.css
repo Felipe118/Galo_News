@@ -38,3 +38,11 @@
     text-decoration: none;
     color: black;
 }
+.box-error{
+    padding: .8rem;
+}
+.text-danger{
+    color: red;
+    font-size: 1.3rem;
+    text-align: center;
+}

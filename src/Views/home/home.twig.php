@@ -8,7 +8,7 @@
      <div class="modal__home">
          <a class="modal__link-principal" href="/News_Galo/renderNew?new={{capaOne.id}}"> 
              <div class="modal__princial">
-                 <img class="img__principal" src="./assets/img/finans.jpg" alt="Estadio">
+                 <img class="img__principal" src="{{capaOne.imagem}}" alt="Estadio">
                  <div class="modal__texts">
                      <h1 class="modal__principal-title">{{capaOne.titulo}}</h1>
                      <span class="modal__principal-text">{{capaOne.resumo}} </span>

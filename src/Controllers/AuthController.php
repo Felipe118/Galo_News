@@ -8,8 +8,12 @@ use Throwable;
 class AuthController extends Controller
     {
         public function auth()
-        {
-            return $this->view('auth.auth');
+
+        {   
+            $erro = isset($_GET['erro']) == 'login' ? 'login' : '';
+            return $this->view('auth.auth', [
+                'error' => $erro
+            ]);
         }
         public function authPost()
         {
@@ -19,7 +23,7 @@ class AuthController extends Controller
             $jornalista->Auth();
             $pass =  $jornalista->__get('senha');
 
-            if ( password_verify($_POST['senha'], $pass) ) {
+            if (password_verify($_POST['senha'], $pass) ) {
                 session_start();
                 $_SESSION['id'] = $jornalista->__get('id');
                 $_SESSION['nome']  = $jornalista->__get('nome');

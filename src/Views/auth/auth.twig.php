@@ -10,7 +10,11 @@
     <title>Login</title>
 </head>
 <body>
-
+    {% if error == 'login' %}
+        <div class="box-error">
+            <p class="text-danger">Login ou senha incorretos</p>
+        </div>
+    {% endif %}
  <form action="/News_Galo/authPost" method="POST">
      <div class="form">
         <div class="form-control">
