@@ -28,7 +28,7 @@
     {% endblock %}
 </head>
 <body>
-<header>
+<header> 
     <nav class="navbar-jor">
         <img class="logo_img-jor" src="./assets/img/logo_galo.svg" alt="Logo Galo">
         <ul class="list">

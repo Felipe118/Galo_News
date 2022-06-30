@@ -25,7 +25,7 @@ class Jornalista extends Model
 
         public function auth()
         {
-            try{
+            
                 $query = "SELECT id,nome,email,senha,permissao,primeiro_acesso FROM jornalistas WHERE email = :email;";
                 $stmt = $this->db->prepare($query);
                 $stmt->bindValue(':email', $this->__get('email'));
@@ -51,9 +51,9 @@ class Jornalista extends Model
     
              
 
-            }catch(\PDOException $e){
+         
                 echo "ERRO:". $e->getMessage();
-            }
+           
         }
 
         protected function getPass()
